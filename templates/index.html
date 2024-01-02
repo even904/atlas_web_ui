@@ -13,20 +13,20 @@
         <br />
         <br />
         <input type="submit" value="上传" /> <button type="button" onclick="convertCallBack()">转换</button>
-        <button id="recButton" type="button" onmousedown="mouseDownInputCallBack()"
-            onmouseup="mouseUpUploadCallBack()">按下开始录音</button>
+        <!-- <button id="recButton" type="button" onmousedown="mouseDownInputCallBack()"
+            onmouseup="mouseUpUploadCallBack()">按下开始录音</button> -->
     </form>
     <br />
     <br />
-    {% if file_contents %}
+    <h2>语音输出结果如下</h2>
     <div id="outputDiv">
-        <h2>测试返回输出数据</h2>
         {{ file_contents }}
     </div>
-    {% endif %}
 </body>
 
-<script src="recorder.js">
+<!-- <script src="recorder.js"></script>
+
+<script>
     var recorder;
     function startRecording() {
         navigator.mediaDevices.getUserMedia({ audio: true })
@@ -44,7 +44,7 @@
             audio.play();
         });
     }
-</script>
+</script> -->
 
 <script>
     function convertCallBack() {
@@ -70,4 +70,4 @@
     }
 </script>
 
-</html>ter
+</html>
