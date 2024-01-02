@@ -7,7 +7,7 @@
 
 <body>
     <h1>欢迎使用Atlas语音转文字应用！</h1>
-    <h3>请上传一个音频文件</h3>
+    <h3>请上传一个音频文件，或按住并录音</h3>
     <form action="/" method="POST" enctype="multipart/form-data">
         <input type="file" name="file" />
         <br />
@@ -16,15 +16,14 @@
         <button id="recButton" type="button" onmousedown="mouseDownInputCallBack()"
             onmouseup="mouseUpUploadCallBack()">按下开始录音</button>
     </form>
+    <br />
+    <br />
     {% if file_contents %}
-    <br />
-    <br />
-
-    {% endif %}
     <div id="outputDiv">
         <h2>测试返回输出数据</h2>
         {{ file_contents }}
     </div>
+    {% endif %}
 </body>
 
 <script src="recorder.js">
@@ -45,7 +44,9 @@
             audio.play();
         });
     }
+</script>
 
+<script>
     function convertCallBack() {
         var xmlhttp;
         xmlhttp = new XMLHttpRequest();
@@ -53,7 +54,7 @@
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 document.getElementById("outputDiv").innerHTML = xmlhttp.responseText;
             }
-        };
+        }
         xmlhttp.open("POST", "/process_convert_form", true);
         xmlhttp.send();
     }
@@ -67,7 +68,6 @@
         stopRecording();
         document.getElementById("recButton").innerHTML = "按下开始录音";
     }
-
 </script>
 
 </html>
